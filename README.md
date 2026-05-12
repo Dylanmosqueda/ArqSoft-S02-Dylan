@@ -13,3 +13,6 @@ Lo utilice para ayudarme a poner la categoria de palabras y para mostrar las pis
 Captura de pantalla 2026-05-12 100510
 Captura de pantalla 2026-05-12 100608
 Captura de pantalla 2026-05-12 100816
+<img width="1920" height="1080" alt="Captura de pantalla 2026-05-12 100816" src="https://github.com/user-attachments/assets/9353323b-031d-4e2f-adde-ffe60ae0cd53" />
+<img width="1920" height="1080" alt="Captura de pantalla 2026-05-12 100608" src="https://github.com/user-attachments/assets/3f2a7340-dc07-43eb-abe7-33565ac73911" />
+<img width="1920" height="1080" alt="Captura de pantalla 2026-05-12 100510" src="https://github.com/user-attachments/assets/09ef778a-d50f-4539-b1dd-0711f660d319" />
