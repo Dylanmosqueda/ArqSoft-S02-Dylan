@@ -9,5 +9,7 @@ Además, se implementó una funcionalidad extra de pista automática, donde desp
 ChatGPT
 Lo utilice para ayudarme a poner la categoria de palabras y para mostrar las pistas automaticamente
 
-# scripshots
-
+# scripshots:
+Captura de pantalla 2026-05-12 100510
+Captura de pantalla 2026-05-12 100608
+Captura de pantalla 2026-05-12 100816
