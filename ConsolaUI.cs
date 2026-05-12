@@ -15,6 +15,10 @@ namespace Ahorcado
 
         public void MostrarTablero()
         {
+            if (_motor.MostrarPista)
+            {
+                Console.WriteLine($"Pista: la palabra empieza con '{_motor.PalabraSecreta[0]}'");
+            }
             Console.Clear();
             MostrarAhorcado();
 

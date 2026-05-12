@@ -46,5 +46,6 @@ namespace Ahorcado
 
         public bool Perdido()
             => _intentosRestantes <= 0;
+        public bool MostrarPista => _intentosRestantes <= 3;
     }
 }
