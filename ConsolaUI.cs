@@ -15,10 +15,7 @@ namespace Ahorcado
 
         public void MostrarTablero()
         {
-            if (_motor.MostrarPista)
-            {
-                Console.WriteLine($"Pista: la palabra empieza con '{_motor.PalabraSecreta[0]}'");
-            }
+            
             Console.Clear();
             MostrarAhorcado();
 
@@ -33,6 +30,11 @@ namespace Ahorcado
             }
 
             Console.WriteLine();
+
+            if (_motor.MostrarPista)
+            {
+                Console.WriteLine($"Pista: la palabra empieza con '{_motor.PalabraSecreta[0]}'");
+            }
         }
 
         public char PedirLetra()
@@ -64,6 +66,24 @@ namespace Ahorcado
             };
 
             Console.WriteLine(etapas[6 - _motor.IntentosRestantes]);
+        }
+        public string PedirCategoria()
+        {
+            Console.WriteLine("Elige una categoría:");
+            Console.WriteLine("1. Arquitectura");
+            Console.WriteLine("2. POO");
+            Console.WriteLine("3. .NET");
+            Console.Write("Opción: ");
+
+            string opcion = Console.ReadLine();
+
+            return opcion switch
+            {
+                "1" => "Arquitectura",
+                "2" => "POO",
+                "3" => ".NET",
+                _ => "POO"
+            };
         }
     }
 }
