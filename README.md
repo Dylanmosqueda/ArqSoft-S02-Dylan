@@ -1,15 +1,7 @@
-# Ahorcado
-# Descripcion
-Este proyecto consiste en el desarrollo de un juego de consola llamado Ahorcado, programado en C# utilizando .NET y Visual Studio. Su objetivo principal es aplicar conceptos de Programación Orientada a Objetos (POO), arquitectura de software y buenas prácticas de desarrollo mediante una versión refactorizada del juego clásico.
-El sistema permite que el usuario seleccione una categoría de palabras al iniciar la partida, como Arquitectura, POO o .NET, y a partir de esa elección el juego utiliza únicamente palabras relacionadas con dicha categoría. El jugador debe adivinar la palabra secreta ingresando letras, teniendo un número limitado de intentos antes de perder la partida.
-El proyecto está estructurado en varias clases con responsabilidades separadas, como MotorAhorcado, que controla la lógica del juego; ConsolaUI, que administra la interacción con el usuario; y PalabrasEnMemoria, que funciona como repositorio de palabras organizadas por categoría. Esta separación permite una mejor organización del código, mayor mantenimiento y una arquitectura más limpia.
-Además, se implementó una funcionalidad extra de pista automática, donde después de tres intentos restantes el sistema muestra la primera letra de la palabra secreta para ayudar al jugador.
+# README de la viborita
+Este es el readme de la viborita
+Este proyecto es un juego de la viborita hecho en en la carpeta de  Ahorcado, es un juego de consola
+cree nuevas clases para el juego de la viborita, llamados IMotorJuego, ImotorViborita y ConsolaUIViborita
+este proyecto funcona con el motor de juego de la viborita, el cual se encarga de manejar la logica del juego, y la consolaUIViborita se encarga de mostrar el juego en la consola, y recibir las entradas del usuario
+No utilice  IA
 
-# Tecnologías utilizadas:
-ChatGPT
-Lo utilice para ayudarme a poner la categoria de palabras y para mostrar las pistas automaticamente
-
-# scripshots:
-Captura de pantalla 2026-05-12 100510
-Captura de pantalla 2026-05-12 100608
-Captura de pantalla 2026-05-12 100816

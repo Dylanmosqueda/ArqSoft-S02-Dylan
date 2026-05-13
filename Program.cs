@@ -1,74 +1,153 @@
-﻿
-var repositorio = new Ahorcado.PalabrasEnMemoria();
-var motor = new Ahorcado.MotorAhorcado(repositorio);
-var ui = new Ahorcado.ConsolaUI(motor);
+﻿// Menú principal
 
-Console.WriteLine("=== AHORCADO ===");
+Console.WriteLine("¿Qué juego quieres jugar?");
 
-Console.WriteLine("Elige una categoría:");
-Console.WriteLine("1. Arquitectura");
-Console.WriteLine("2. POO");
-Console.WriteLine("3. .NET");
+Console.WriteLine("  1 — Ahorcado");
+
+Console.WriteLine("  2 — Viborita");
+
 Console.Write("Opción: ");
 
-string opcion = Console.ReadLine();
+var opcion = Console.ReadLine();
 
-string categoria = opcion switch
+
+
+if (opcion == "1")
+
 {
-    "1" => "Arquitectura",
-    "2" => "POO",
-    "3" => ".NET",
-    _ => "POO"
-};
 
-repositorio.SeleccionarCategoria(categoria);
-while (!motor.Ganado() && !motor.Perdido())
-{
-    ui.MostrarTablero();
+    // --- LÓGICA DEL AHORCADO ---
 
-    char letra = ui.PedirLetra();
+    var repositorio = new Ahorcado.PalabrasEnMemoria();
 
-    if (motor.LetraYaUsada(letra))
+    var motor = new Ahorcado.MotorAhorcado(repositorio);
+
+    var ui = new Ahorcado.ConsolaUI(motor);
+
+
+
+    Console.WriteLine("=== AHORCADO ===");
+
+
+
+    while (!motor.Ganado() && !motor.Perdido())
+
     {
-        ui.MostrarMensaje("Ya usaste esa letra.");
-        continue;
+
+        ui.MostrarTablero();
+
+        char letra = ui.PedirLetra();
+
+
+
+        if (motor.LetraYaUsada(letra))
+
+        {
+
+            ui.MostrarMensaje("Ya usaste esa letra.");
+
+            continue;
+
+        }
+
+        motor.RegistrarLetra(letra);
+
     }
 
-    motor.RegistrarLetra(letra);
-}
 
-ui.MostrarTablero();
 
-if (motor.Ganado())
-{
-    ui.MostrarMensaje($"\n¡Ganaste! La palabra era: {motor.PalabraSecreta}");
-}
-else
-{
-    ui.MostrarMensaje($"\nPerdiste. La palabra era: {motor.PalabraSecreta}");
-}
+    ui.MostrarTablero();
 
-if (ui.PreguntarOtraVez())
-{
-    
-    Console.WriteLine("Elige una categoría:");
-    Console.WriteLine("1. Arquitectura");
-    Console.WriteLine("2. POO");
-    Console.WriteLine("3. .NET");
-    Console.Write("Opción: ");
 
-    opcion = Console.ReadLine();
 
-    categoria = opcion switch
+    if (motor.Ganado())
+
+        ui.MostrarMensaje($"\n¡Ganaste! La palabra era: {motor.PalabraSecreta}");
+
+    else
+
+        ui.MostrarMensaje($"\nPerdiste. La palabra era: {motor.PalabraSecreta}");
+
+
+
+    // Nota: El código original de 'PreguntarOtraVez' solo instanciaba
+
+    // pero no reiniciaba el bucle. Aquí se mantiene igual a tu fragmento.
+
+    if (ui.PreguntarOtraVez())
+
     {
-        "1" => "Arquitectura",
-        "2" => "POO",
-        "3" => ".NET",
-        _ => "POO"
-    };
 
-    repositorio.SeleccionarCategoria(categoria);
-  
-    var nuevoMotor = new Ahorcado.MotorAhorcado(repositorio);
-    var nuevaUI = new Ahorcado.ConsolaUI(nuevoMotor);
+        var nuevoMotor = new Ahorcado.MotorAhorcado(repositorio);
+
+        var nuevaUI = new Ahorcado.ConsolaUI(nuevoMotor);
+
+    }
+
+}
+
+else if (opcion == "2")
+
+{
+
+    // --- LÓGICA DE LA VIBORITA ---
+
+    var motor = new Ahorcado.MotorViborita();
+
+    var ui = new Ahorcado.ConsolaUIViborita(motor);
+
+
+
+    Console.CursorVisible = false;
+
+
+
+    while (!motor.Ganado() && !motor.Perdido())
+
+    {
+
+        ui.MostrarTablero();
+
+        var tecla = ui.LeerTecla();
+
+
+
+        if (tecla == ConsoleKey.Q) break;
+
+
+
+        if (tecla != ConsoleKey.NoName)
+
+            motor.CambiarDireccion(tecla);
+
+
+
+        motor.Avanzar();
+
+        Thread.Sleep(150); // velocidad del juego
+
+    }
+
+
+
+    ui.MostrarTablero();
+
+    ui.MostrarMensaje(motor.Ganado()
+
+    ? "\n¡Ganaste! Llegaste a 10 puntos."
+
+    : "\nGame over.");
+
+
+
+    Console.CursorVisible = true;
+
+}
+
+else
+
+{
+
+    Console.WriteLine("Opción no válida.");
+
 }
