@@ -1,121 +1,51 @@
-﻿namespace Ahorcado
+﻿namespace Ahorcado;
 
+public class ConsolaUIViborita
 {
+    private readonly MotorViborita _motor;
 
-    public class ConsolaUIViborita
+    // Constructor simplificado (Expression-bodied)
+    public ConsolaUIViborita(MotorViborita motor) => _motor = motor;
 
+    public void MostrarTablero()
     {
+        Console.SetCursorPosition(0, 0);
+        Console.WriteLine($"=== VIBORITA === Puntos: {_motor.Puntos}");
 
-        private readonly MotorViborita _motor;
+        // Uso de interpolación en lugar de concatenación con '+'
+        Console.WriteLine($"+{new string('-', _motor.Ancho)}+");
 
-
-
-        public ConsolaUIViborita(MotorViborita motor)
-
+        for (int y = 0; y < _motor.Alto; y++)
         {
+            Console.Write("|");
 
-            _motor = motor;
-
-        }
-
-
-
-        public void MostrarTablero()
-
-        {
-
-            Console.SetCursorPosition(0, 0);
-
-            Console.WriteLine($"=== VIBORITA === Puntos: {_motor.Puntos}");
-
-            Console.WriteLine("+" + new string('-', _motor.Ancho) + "+");
-
-
-
-            for (int y = 0; y < _motor.Alto; y++)
-
+            for (int x = 0; x < _motor.Ancho; x++)
             {
+                var pos = (x, y);
 
-                Console.Write("|");
-
-                for (int x = 0; x < _motor.Ancho; x++)
-
+                // Lógica de dibujo simplificada con Switch Expression (C# 8+)
+                char pixel = pos switch
                 {
+                    _ when pos == _motor.Cuerpo.First() => '€', // cabeza
+                    _ when _motor.Cuerpo.Contains(pos) => '0', // cuerpo
+                    _ when pos == _motor.Comida => 'º', // comida
+                    _ => ' '  // vacío
+                };
 
-                    var pos = (x, y);
-
-
-
-                    // Lógica de dibujo corregida
-
-                    if (_motor.Cuerpo.First() == pos)
-
-                    {
-
-                        Console.Write("€"); // cabeza
-
-                    }
-
-                    else if (_motor.Cuerpo.Contains(pos))
-
-                    {
-
-                        Console.Write("0"); // cuerpo
-
-                    }
-
-                    else if (_motor.Comida == pos)
-
-                    {
-
-                        Console.Write("º"); // comida
-
-                    }
-
-                    else
-
-                    {
-
-                        Console.Write(" "); // vacío
-
-                    }
-
-                }
-
-                Console.WriteLine("|");
-
+                Console.Write(pixel);
             }
 
-
-
-            Console.WriteLine("+" + new string('-', _motor.Ancho) + "+");
-
-            Console.WriteLine("Flechas: mover | Q: salir");
-
+            Console.WriteLine("|");
         }
 
-
-
-        public ConsoleKey LeerTecla()
-
-        {
-
-            if (Console.KeyAvailable)
-
-                return Console.ReadKey(intercept: true).Key;
-
-
-
-            return ConsoleKey.NoName;
-
-        }
-
-
-
-        public void MostrarMensaje(string mensaje) =>
-
-        Console.WriteLine(mensaje);
-
+        Console.WriteLine($"+{new string('-', _motor.Ancho)}+");
+        Console.WriteLine("Flechas: mover | Q: salir");
     }
 
+    // Simplificado a una sola línea con operador ternario
+    public ConsoleKey LeerTecla() =>
+        Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;
+
+    // Indentación corregida
+    public void MostrarMensaje(string mensaje) => Console.WriteLine(mensaje);
 }

@@ -10,9 +10,9 @@ namespace Ahorcado
 
         // — Tamaño del tablero —
 
-        public int Ancho { get; } = 20;
+        public int Ancho { get; } = 15;
 
-        public int Alto { get; } = 15;
+        public int Alto { get; } = 20;
 
 
 
