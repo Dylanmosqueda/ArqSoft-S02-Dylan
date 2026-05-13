@@ -52,7 +52,7 @@
 
                     {
 
-                        Console.Write("@"); // cabeza
+                        Console.Write("€"); // cabeza
 
                     }
 
@@ -60,7 +60,7 @@
 
                     {
 
-                        Console.Write("o"); // cuerpo
+                        Console.Write("0"); // cuerpo
 
                     }
 
@@ -68,7 +68,7 @@
 
                     {
 
-                        Console.Write("*"); // comida
+                        Console.Write("º"); // comida
 
                     }
 
